@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 
 const HomePage = () => {
     const history = useHistory();
-    const handleClick = () => history.push('/scanner');
+    const handleClick = () => history.push('/pindai');
    return (
     <Container>
     <Row>
