@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserResource;
 use App\User;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -18,7 +18,7 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         try {
-            if (!$token = JWTAuth::attemp($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json([
                     'error' => 'invalid_credentials',
                 ], 400);
@@ -28,7 +28,8 @@ class UserController extends Controller
                 'error' => 'could_not_create_token'
             ], 500);
         }
-        return response()->json(compact('token'));
+        // return response()->json(compact('token'));
+        return $this->respondWithToken($token);
     }
 
     public function register(Request $request)
@@ -69,5 +70,15 @@ class UserController extends Controller
         $userResource = new UserResource($user);
 
         return response()->json(compact('userResource'), 200);
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'user' => auth()->user(),
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
     }
 }

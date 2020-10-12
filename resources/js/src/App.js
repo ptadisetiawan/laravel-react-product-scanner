@@ -8,7 +8,10 @@ import {
 import ScannerPage from './ui/pages/scanner_page';
 import HomePage from './ui/pages/home_page';
 import ResultPage from './ui/pages/result_page';
-import LoginPage from './ui/pages/auth/login_page';
+import SignIn from './ui/pages/auth/sign_in';
+import Panel from './ui/pages/admin/panel';
+import PrivateRoute from './ui/components/private_route';
+
 
 const App = () => (
     <Router>
@@ -20,8 +23,9 @@ const App = () => (
                 <ScannerPage />
             </Route>
             <Route path="/login">
-                <LoginPage />
+                <SignIn />
             </Route>
+            <PrivateRoute path="/administration"   component={Panel} />
             <Route path="/result/:kode" children={<ResultPage />} />
         </Switch>
     </Router>

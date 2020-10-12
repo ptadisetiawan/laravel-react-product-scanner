@@ -18,12 +18,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './src/App';
 import * as serviceWorker from './serviceWorker';
+import AuthProvider from './src/context/auth_context'
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
+    <AuthProvider>
     <App />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
