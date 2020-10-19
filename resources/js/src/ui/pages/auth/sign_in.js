@@ -17,7 +17,10 @@ const SignIn = () => {
         setAuthData(resp.data)
         history.push('/administration');
     }).catch((e) => {
-        console.log(e.response.data.error)
+        if(e.response.data.error == 'invalid_credentials'){
+            alert('Username or password not match with our record')
+        }
+        // console.log(e.response)
     });
   };
 

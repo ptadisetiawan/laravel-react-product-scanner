@@ -1,30 +1,29 @@
-import React, {useContext} from "react";
-import { Button } from "react-bootstrap";
-import {authContext} from '../../../context/auth_context';
+import React from "react";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
+import Sidebar from './sidebar';
+import './style/dashboard.css';
 
 
-const Panel = () => {
-  const { setAuthData, auth } = useContext(authContext);
-  const onLogOut = () => {
-    setAuthData(null);
-  } //clearing the context
+const Panel = (props) => {
   return (
-    <div
-      style={{ height: "100vh" }}
-      className="d-flex justify-content-center align-items-center"
-    >
-      <div style={{ width: 300 }}>
-        <h1 className="text-center"> {`Hello, ${auth.user.name}`} </h1>
-        <Button
-          variant="primary"
-          type="button"
-          className="w-100 mt-3"
-          onClick={onLogOut}
-        >
-          Log out
-        </Button>
-      </div>
-    </div>
+      <>
+    <Container fluid>
+    <Row>
+        <Col xs={2} id="sidebar-wrapper">
+          <Sidebar />
+        </Col>
+        <Col  xs={10} id="page-content-wrapper">
+        <Navbar expand="xl" variant="light" bg="light">
+        <Container>
+            <Navbar.Brand href="#">Product Scanner Admin Panel</Navbar.Brand>
+        </Container>
+        </Navbar>
+            {props.children}
+        </Col>
+    </Row>
+
+</Container>
+</>
   );
 };
 
