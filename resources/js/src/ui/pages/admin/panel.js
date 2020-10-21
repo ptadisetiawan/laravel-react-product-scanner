@@ -13,7 +13,7 @@ const Panel = (props) => {
           <Sidebar />
         </Col>
         <Col  xs={10} id="page-content-wrapper">
-        <Navbar expand="xl" variant="light" bg="light">
+        <Navbar expand="xl" variant="light" bg="white">
         <Container>
             <Navbar.Brand href="#">Product Scanner Admin Panel</Navbar.Brand>
         </Container>

@@ -7,6 +7,9 @@
     z-index: 100;
     background-color:#FFFFFF;
     padding: 8px;
+    -webkit-box-shadow: 3px 0px 13px -6px rgba(0,0,0,0.50);
+    -moz-box-shadow: 3px 0px 13px -6px rgba(0,0,0,0.50);
+    box-shadow: 3px 0px 13px -6px rgba(0,0,0,0.50);
 }
 #sidebar-wrapper{
     min-height: 100vh !important;
@@ -16,9 +19,6 @@
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    -webkit-box-shadow: 3px 0px 13px -6px rgba(0,0,0,0.50);
-    -moz-box-shadow: 3px 0px 13px -6px rgba(0,0,0,0.50);
-    box-shadow: 3px 0px 13px -6px rgba(0,0,0,0.50);
 }
 #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;

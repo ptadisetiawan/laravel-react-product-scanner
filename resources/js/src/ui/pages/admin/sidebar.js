@@ -8,9 +8,11 @@ const Side = props => {
     const logo = "https://www.metaltoad.com/sites/default/files/styles/large_personal_photo_870x500_/public/2020-05/react-js-blog-header.png?itok=VbfDeSgJ";
     return (
         <>
+        <div className="sticky-top">
             <Nav className="col-md-12 d-none d-md-block sidebar"
             activeKey="/import"
             >
+
             <div className="text-center">
             <Image
              width={100}
@@ -23,7 +25,7 @@ const Side = props => {
             <LogoutButton/>
 
             </Nav>
-
+            </div>
         </>
         );
   };
