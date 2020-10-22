@@ -14,18 +14,18 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    setAuth({ loading: false, access_token: JSON.parse(window.localStorage.getItem('access_token')),
+    setAuth({ loading: false, access_token: window.localStorage.getItem('access_token'),
     user : JSON.parse(window.localStorage.getItem('user'))
     });
   }, []);
-//2. if object with key 'authData' exists in localStorage, we are putting its value in auth.data and we set loading to false.
-//This function will be executed every time component is mounted (every time the user refresh the page);
+    //2. if object with key 'access_token' exists in localStorage, we are putting its value in auth.access_token and we set loading to false.
+    //This function will be executed every time component is mounted (every time the user refresh the page);
 
   useEffect(() => {
-    window.localStorage.setItem('access_token', JSON.stringify(auth.access_token));
+    window.localStorage.setItem('access_token', auth.access_token);
     window.localStorage.setItem('user', JSON.stringify(auth.user));
   }, [auth]);
-// 1. when **auth.data** changes we are setting **auth.data** in localStorage with the key 'authData'.
+    // 1. when **auth.access_token** changes we are setting **auth.access_token** in localStorage with the key 'access_token'.
 
   return (
     <authContext.Provider value={{ auth, setAuthData }}>

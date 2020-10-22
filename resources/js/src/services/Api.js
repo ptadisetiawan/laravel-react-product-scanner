@@ -1,6 +1,6 @@
 import axios from 'axios';
 const instance = axios.create({
-  baseURL: `api/`,
+  baseURL: window.location.protocol + '//' + window.location.host + '/' + `api/`,
 });
 
 

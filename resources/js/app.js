@@ -21,14 +21,17 @@ import * as serviceWorker from './serviceWorker';
 import AuthProvider from './src/context/auth_context'
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductProvider from './src/context/product_context';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AuthProvider>
-    <App />
-    </AuthProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    // <React.StrictMode>
+        <AuthProvider>
+            <ProductProvider>
+                <App />
+            </ProductProvider>
+        </AuthProvider>
+    // </React.StrictMode>
+    ,document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
