@@ -7,8 +7,14 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="manifest" href="/manifest.json">
 
-    <title>React Laravel</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e5e5e5">
+    <title>SP Scan</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -17,5 +23,12 @@
     <div id="root"></div>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js');
+          });
+        }
+      </script> --}}
 </body>
 </html>

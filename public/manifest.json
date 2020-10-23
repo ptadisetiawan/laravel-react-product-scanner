@@ -1,0 +1,61 @@
+{
+    "short_name": "SP Scann",
+    "name": "SP Scann",
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "48x48"
+      },
+       {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "72x72"
+      },
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "96x96"
+      },
+       {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "144x144"
+      },
+       {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "168x168"
+      },
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "256x256"
+      },
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "384x384"
+      },
+      {
+        "src": "/icons/logo.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "orientation": "portrait"
+  }
