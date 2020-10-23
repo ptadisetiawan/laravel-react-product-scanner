@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { productContext } from '../../../context/product_context';
 import ImportModal from '../../components/import_modal';
@@ -7,7 +7,7 @@ import Panel from './panel';
 
 
 function ImportPage() {
-    const { productList, setProductListData, fetchProductApi, loading } = useContext(productContext);
+    const { productList, fetchProductApi, loading } = useContext(productContext);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -32,19 +32,24 @@ function ImportPage() {
     }, [])
 
     return (
-        <>
-        {(loading) ? (<Spinner animation="border" />) : (
         <Panel>
             <Button onClick={handleShow} className="my-2" >Import dari Jeking</Button>
-
-            <DTable products={productList} columns={columns}
-             defaultSorted={defaultSorted}
-              />
-            <ImportModal show={show} handleClose={handleClose}/>
-        </Panel>)}
-        </>
-
+            {(loading) ? (<div style={{
+                width: "100%",
+                height: "200px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}><Spinner animation="border" className="text-center" /></div>) : (
+                    <DTable products={productList} columns={columns}
+                        defaultSorted={defaultSorted}
+                    />
+                )}
+            <ImportModal show={show} handleClose={handleClose} />
+        </Panel>
     );
+
+
 }
 
 export default ImportPage;

@@ -1,52 +1,44 @@
-import React, {useEffect, useState} from 'react';
-import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
+import React, { useEffect, useState, useContext } from 'react';
+import { Container, Row, Col, Card, Spinner, Image, Alert } from 'react-bootstrap';
 import { useParams, Link } from 'react-router-dom';
-import API from '../../services/Api';
-function ResultPage(){
-    let {kode} = useParams();
-    const inititalProduct = {
-        id: null,
-        nama: null,
-        imageUrl: null,
-        harga: null
-    }
-    const [loading, setloading] = useState(false)
-    const  [product, setProduct] = useState(inititalProduct);
+import { productContext } from '../../context/product_context';
+import NumberFormat from 'react-number-format';
+function ResultPage() {
+    let { kode } = useParams();
+    const { product, showProductApi, loading, error } = useContext(productContext);
     const ContainerStyle = {
         height: '150px',
         position: 'relative'
     }
     useEffect(() => {
-        setloading(true)
-        console.log(kode)
-        API.get(`product-json.php`)
-      .then(res => {
-        setProduct(res.data)
-        setloading(false)
-      })
-      },[kode, setloading]);
-    return(
+        showProductApi(kode)
+    }, [kode]);
+    return (
         <Container>
             <Row>
                 <Col className="text-center">
-                <Card style={{ width: '100%' }}>
-                {!loading ?
-                <Card.Img variant="top" src={product.imageUrl} />
-                :
-                <div className="text-center" style={ContainerStyle}>
-                <Spinner style={{position: 'absolute',
-            top: '50%'
-            }} animation="border" /></div>
-                }
 
-                <Card.Body>
-                <Card.Title>Rp. {product.harga}</Card.Title>
-                    <Card.Text>
-                     {product.nama}
-                    </Card.Text>
-                </Card.Body>
-                </Card>
-                <Link to="/scanner">Pindai lagi</Link>
+                    {(error) ? (<Alert variant="error">{error}</Alert>) : (<>
+                    <Image src={product.imageUrl} width={'80%'}/>
+                    <Card style={{ width: '100%', border: 'none' }}>
+                    <Card.Body>
+                    <Card.Title className="text-left" >{product.name}</Card.Title>
+                    <Card.Title className="mb-2 text-muted text-left"><NumberFormat value={product.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></Card.Title>
+                    </Card.Body>
+                    </Card>
+                    </>)}
+                    <br/>
+                    <Link style={{backgroundColor: '#F2994A', borderColor: '#F2994A', color: '#FFFFFF', padding: '50px', borderRadius: 500}} className="btn" to="/pindai">
+                        <div style={{
+                            height: '100px',
+                            width: '100px',
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                             fontSize: '18px'
+                        }}>
+                            <strong>
+                        SCAN LAGI</strong></div></Link>
                 </Col>
             </Row>
         </Container>

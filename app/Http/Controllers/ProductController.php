@@ -6,6 +6,7 @@ use App\Product;
 use App\Jobs\ImportJob;
 use Illuminate\Http\Request;
 use App\Imports\ProductsImport;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -22,26 +23,6 @@ class ProductController extends Controller
         return response()->json($product, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -51,44 +32,20 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            if( $product = Product::where(['kode' => $id])->first()){
+                return response()->json($product, 200);
+            }else{
+                return response()->json(['message' => 'Produk tidak ditemukan'], 404);
+            }
+        } catch (Exception $exception) {
+            return response()->json($exception->getMessage(), 500);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function import(Request $request)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function import(Request $request){
         $this->validate($request, [
             'file' => 'required|mimes:xls,xlsx'
         ]);
@@ -96,11 +53,12 @@ class ProductController extends Controller
             // tanpa queue
             // $file = $request->file('file'); //GET FILE
             // Excel::import(new ProductsImport, $file); //IMPORT FILE
-             //UPLOAD FILE
+            //UPLOAD FILE
             $file = $request->file('file');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->storeAs(
-                'public', $filename
+                'public',
+                $filename
             );
 
             //MEMBUAT JOBS DENGAN MENGIRIMKAN PARAMETER FILENAME
@@ -108,10 +66,8 @@ class ProductController extends Controller
             return response()->json([
                 'message' => 'Berhasil'
             ], 200);
-        }else{
+        } else {
             return response()->json(['message' => 'internal error'], 500);
         }
-        // return $request->all();
-        // return response()->json(['message' => 'internal error'], 500);
     }
 }

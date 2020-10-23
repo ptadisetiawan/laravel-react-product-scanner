@@ -1,28 +1,29 @@
-import React from'react';
-import { Col, Container, Row, Card, Button } from 'react-bootstrap';
-import {useHistory} from 'react-router-dom';
+import React from 'react';
+import { Col, Container, Row, Image, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import logo from '../../../assets/img/welcome.png';
 
 const HomePage = () => {
     const history = useHistory();
     const handleClick = () => history.push('/pindai');
-   return (
-    <Container>
-    <Row>
-        <Col>
-        <Card style={{ width: '100%' }}>
-        <Card.Body>
-            <Card.Title>Cek harga sekarang bisa melalui website</Card.Title>
-            <Card.Text>
-                Cek harga akan menggunakan kode QR, tekan tombol dibawah untuk membuka kamera anda. <br/>
-                <strong>Jika muncul permintaan ijin untuk menggunakan kamera, tekan IZINKAN.</strong>
-            </Card.Text>
-            <Button className="float-right btn btn-success" onClick={handleClick}>Mulai pindai kode QR</Button>
-        </Card.Body>
-        </Card>
-        </Col>
-    </Row>
-</Container>
-   );
+    return (
+        <Container fluid>
+            <Row className="justify-content-center">
+                <Col className="text-center">
+                    <div style={{height:'30%'}}></div>
+                    <Image src={logo} rounded width={'80%'} />
+                    <div className="fixed-bottom mb-4 mx-2 text-center">
+                    <h3>Selamat Datang</h3>
+                    <p>
+                        Tekan tombol scan untuk mendapatkan <br></br>
+                        informasi harga
+                    </p>
+                    <Button style={{backgroundColor: '#F2994A', borderColor: '#F2994A'}} className="w-75" onClick={handleClick}>SCAN</Button>
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+    );
 };
 
 export default HomePage;

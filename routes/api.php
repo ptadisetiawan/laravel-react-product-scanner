@@ -22,6 +22,7 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 Route::post('product/import', 'ProductController@import')->middleware('jwt.verify');
 Route::get('product', 'ProductController@index')->middleware('jwt.verify');
+Route::get('product/{id}', 'ProductController@show');
 
 // Route::get('bookall', 'ProductController@bookAuth')->middleware('jwt.verify');
 // Route::get('user', 'UserController@getAuthenticatedUser')->middleware('jwt.verify');
