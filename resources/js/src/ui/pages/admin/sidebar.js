@@ -5,7 +5,7 @@ import LogoutButton from "../../components/logout";
 import './style/dashboard.css';
 
 const Side = props => {
-    const logo = "https://www.metaltoad.com/sites/default/files/styles/large_personal_photo_870x500_/public/2020-05/react-js-blog-header.png?itok=VbfDeSgJ";
+    const logo = "https://suryapangan.com/image/cache/surya-pangan-logo-retina-600x315.png";
     return (
         <>
         <div className="sticky-top">

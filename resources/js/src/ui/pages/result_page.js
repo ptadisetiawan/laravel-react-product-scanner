@@ -24,6 +24,8 @@ function ResultPage() {
                     <Card.Body>
                     <Card.Title className="text-left" >{product.name}</Card.Title>
                     <Card.Title className="mb-2 text-muted text-left"><NumberFormat value={product.harga} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></Card.Title>
+                    {(product.partai_1 != 0) ? <> <Card.Title className="mb-2 text-muted text-left">Harga spesial pengambilan {product.partai_1} {product.unit} <NumberFormat value={product.harga_partai_1} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></Card.Title></> : <></>}
+                    {(product.partai_2 != 0) ? <> <Card.Title className="mb-2 text-muted text-left">Harga spesial pengambilan {product.partai_2} {product.unit} <NumberFormat value={product.harga_partai_2} displayType={'text'} thousandSeparator={true} prefix={'Rp. '} /></Card.Title></> : <></>}
                     </Card.Body>
                     </Card>
                     </>)}

@@ -12,6 +12,7 @@ import SignIn from './ui/pages/auth/sign_in';
 import WelcomePage from './ui/pages/admin/welcome_page';
 import PrivateRoute from './ui/components/private_route';
 import ImportPage from './ui/pages/admin/import_page';
+import PublicRedirect from './ui/components/public_redirect';
 
 
 const App = () => (
@@ -25,6 +26,10 @@ const App = () => (
             </Route>
             <Route path="/login">
                 <SignIn />
+            </Route>
+
+            <Route path="/public">
+                <PublicRedirect />
             </Route>
 
             <PrivateRoute exact path="/administration" component={WelcomePage} />

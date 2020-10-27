@@ -16,7 +16,12 @@ function ImportPage() {
     const columns = [
         { dataField: 'kode', text: 'Kode', sort: true },
         { dataField: 'name', text: 'Name', sort: true },
-        { dataField: 'harga', text: 'Harga', sort: true }
+        { dataField: 'unit', text: 'Unit', sort: true },
+        { dataField: 'harga', text: 'Harga', sort: true },
+        { dataField: 'partai_1', text: 'Partai 1', sort: true },
+        { dataField: 'harga_partai_1', text: 'Harga Partai 1', sort: true },
+        { dataField: 'partai_2', text: 'Partai 2', sort: true },
+        { dataField: 'harga_partai_2', text: 'Harga Partai 2', sort: true }
     ];
 
     const defaultSorted = [{

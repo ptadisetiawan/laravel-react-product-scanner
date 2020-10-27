@@ -21,7 +21,12 @@ class ProductsImport implements ToModel, WithHeadingRow, WithChunkReading, Shoul
             'kode' => $row['kode'],
         ], [
             'name' => $row['keterangan'],
-            'harga' => $row['hargajual']
+            'harga' => $row['hargajual'],
+            'partai_1' => $row['qty_party'],
+            'harga_partai_1' => $row['prc_party'],
+            'partai_2' => $row['qty_party2'],
+            'harga_partai_2' => $row['prc_party2'],
+            'unit' => $row['unit']
         ]);
     }
 
